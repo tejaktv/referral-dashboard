@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BarChartNoAxis = (props: React.SVGProps<SVGSVGElement>) => (
+const BarChartNoAxis = (props) => (
   <svg
     viewBox="0 0 24 24"
     fill="none"

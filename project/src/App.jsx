@@ -15,37 +15,19 @@ import {
   BarChart
 } from 'lucide-react';
 
-import WhatsAppIcon from './components/icons/WhatsAppIcon';
-import XIcon from './components/icons/XIcon';
-import LinkedInIcon from './components/icons/LinkedInIcon';
-import BarChartNoAxis from './components/icons/BarChartNoAxis';
-
-interface User {
-  id: number;
-  name: string;
-  avatar: string;
-  coins: number;
-  referrals: number;
-  rank: number;
-}
-
-interface ReferralHistory {
-  id: number;
-  name: string;
-  avatar: string;
-  date: string;
-  status: 'successful' | 'pending';
-  amount: number;
-}
+import WhatsAppIcon from './components/icons/WhatsAppIcon.jsx';
+import XIcon from './components/icons/XIcon.jsx';
+import LinkedInIcon from './components/icons/LinkedInIcon.jsx';
+import BarChartNoAxis from './components/icons/BarChartNoAxis.jsx';
 
 function App() {
   const [activeTab, setActiveTab] = useState('referral');
   const [withdrawAmount, setWithdrawAmount] = useState('');
   const [upiId, setUpiId] = useState('');
 
-  const referralLink = 'https://asundevnest.com/register?ref=JOHNDOE123';
+  const referralLink = 'https://asandevnest.com/register?ref=JOHNDOE123';
   
-  const leaderboardData: User[] = [
+  const leaderboardData = [
     { id: 1, name: 'Sarah Johnson', avatar: 'SJ', coins: 2500, referrals: 10, rank: 1 },
     { id: 2, name: 'Mike Chen', avatar: 'MC', coins: 2100, referrals: 8, rank: 2 },
     { id: 3, name: 'Me', avatar: 'ME', coins: 1250, referrals: 5, rank: 3 },
@@ -53,7 +35,7 @@ function App() {
     { id: 5, name: 'Alex Kumar', avatar: 'AK', coins: 750, referrals: 3, rank: 5 },
   ];
 
-  const historyData: ReferralHistory[] = [
+  const historyData = [
     { id: 1, name: 'Sarah Johnson', avatar: 'SJ', date: '2024-01-15', status: 'successful', amount: 250 },
     { id: 2, name: 'Mike Chen', avatar: 'MC', date: '2024-01-14', status: 'successful', amount: 250 },
     { id: 3, name: 'Me', avatar: 'ME', date: '2024-01-13', status: 'successful', amount: 250 },
@@ -61,17 +43,11 @@ function App() {
     { id: 5, name: 'Alex Kumar', avatar: 'AK', date: '2024-01-11', status: 'successful', amount: 250 },
   ];
 
-  const copyToClipboard = (text: string) => {
+  const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text);
   };
 
-  const StatCard = ({ icon: Icon, title, value, subtitle, label }: {
-    icon: React.ElementType;
-    title: string;
-    value: string | number;
-    subtitle?: string;
-    label: string;
-  }) => (
+  const StatCard = ({ icon: Icon, title, value, subtitle, label }) => (
     <div className="relative bg-white rounded-xl pt-8 p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200 flex flex-col items-center">
       {/* Floating Icon above card */}
       <div className="absolute -top-7 left-1/2 -translate-x-1/2 z-10">
@@ -89,13 +65,7 @@ function App() {
     </div>
   );
 
-  const TabButton = ({ id, icon: Icon, label, isActive, onClick }: {
-    id: string;
-    icon: React.ElementType;
-    label: string;
-    isActive: boolean;
-    onClick: () => void;
-  }) => (
+  const TabButton = ({ id, icon: Icon, label, isActive, onClick }) => (
     <button
       onClick={onClick}
       className={`flex items-center justify-center gap-2 px-7 py-3 rounded-lg text-base transition-all duration-200
@@ -110,7 +80,7 @@ function App() {
     </button>
   );
 
-  const Avatar = ({ name, size = 'md' }: { name: string; size?: 'sm' | 'md' | 'lg' }) => {
+  const Avatar = ({ name, size = 'md' }) => {
     const sizeClasses = {
       sm: 'w-8 h-8 text-xs',
       md: 'w-10 h-10 text-sm',
